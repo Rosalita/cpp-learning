@@ -35,5 +35,30 @@ int main()
     const int &r4 = r2 * 2; // ok: r3 is a reference to const
     // int &r5 = r2 * 2; // error: r4 is a plain, non const reference
 
+    // a pointer to const
+    const double pi = 3.14;   // pi is const; its value may not be changed
+                              // double *ptr = &pi;        // error: ptr is a plain pointer const double * cant be assigned to double *
+    const double *cptr = &pi; // ok: cptr may point to a double that is const
+                              // *cptr = 42;               // error: cannot assign to *cptr
+
+    // is different to a const pointer
+    // a const pointer can't be nil and must be initialised
+    // once initialised, the address it holds may not be changed.
+
+    int errNumb = 0;
+    int *const curErr = &errNumb; // curErr will always point to errNumb
+    const double pi = 3.14159;
+    const double *const pip = &pi; // pip is a const pointer to a const object
+
+    // which of the following initialisation are legal
+    // int i = -1, &r = 0; // 0 can't be a reference, references must refer to variables.
+    int i2 = 9;
+    int *const p2 = &i2;       // this is only valid if i2 has been declared
+    const int i = -1, &r = 0;  // this is valid
+    const int *const p3 = &i2; // this is valid
+    const int *p1 = &i2;       // this is valid
+    // const int &const r2; //this is not valid r2 is not intialised
+    const int i2 = i, &r = i; // this is valid
+
     return 0;
 }
